@@ -13,9 +13,11 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'devise-bootstrap-views'
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
 gem 'stock_quote'
 gem 'font-awesome-rails'
-gem 'bootstrap-datepicker-rails'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

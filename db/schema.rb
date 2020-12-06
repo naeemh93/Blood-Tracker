@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20201205095615) do
 
-  create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["user_id"], name: "index_friendships_on_user_id"
-  end
-
   create_table "glucose_levels", force: :cascade do |t|
     t.integer "g_level"
     t.string "text"
@@ -28,23 +19,6 @@ ActiveRecord::Schema.define(version: 20201205095615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_glucose_levels_on_user_id"
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.string "ticker"
-    t.string "name"
-    t.decimal "last_price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_stocks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "stock_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["stock_id"], name: "index_user_stocks_on_stock_id"
-    t.index ["user_id"], name: "index_user_stocks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

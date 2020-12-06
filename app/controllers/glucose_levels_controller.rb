@@ -32,6 +32,7 @@ class GlucoseLevelsController < ApplicationController
       format.json { render json: @glucoselevel }
     end
   end
+
   def destroy
     @glucoselevel = GlucoseLevel.find(params[:id])
     glucoselevel.destroy
@@ -45,7 +46,7 @@ class GlucoseLevelsController < ApplicationController
 
 
   def glucose_params
-    params.permit(:g_level, :user_id )
+    params.permit(:g_level )
   end
 
 end

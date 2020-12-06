@@ -11,8 +11,10 @@ class GlucoseLevel < ApplicationRecord
   private
   def levels_quota
 
-    if user.glucose_levels.today.count >= 4
-      errors.add(:base, "Exceeds daily limit")
+    if user
+      if user.glucose_levels.today.count >= 4
+        errors.add(:base, "Exceeds daily limit")
+      end
     end
   end
 end

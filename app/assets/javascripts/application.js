@@ -13,7 +13,8 @@
 //= require rails-ujs
 //= require jquery
 //= require twitter/bootstrap
-//= require bootstrap-datepicker
+//= require moment
+//= require daterangepicker
 //= require turbolinks
 //= require_tree .
 

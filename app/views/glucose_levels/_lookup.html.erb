@@ -1,9 +1,9 @@
-<h3> Readings</h3>
+<h3> Search Readings Based on Date Ranges</h3>
 <div id="friend-lookup">
-  <%= form_tag search_friends_path, remote: true, method: :get, id: 'friend-lookup-form' do %>
+  <%= form_tag search_path, remote: true, method: :get, id: 'lookup-form' do %>
     <div class="form-group row no-padding text-center col-md-12">
       <div class="col-md-10">
-        <%= text_field_tag :search_param, params[:search_param], placeholder: "Select Date Option", autofocus: true, class: " datepicker  form-control search-box input-lg" %>
+        <%= text_field_tag :search_param,  params[:search_param] , placeholder: "Select Date Option", class: "daterange  form-control search-box input-lg"  %>
       </div>
       <div class="col-md-2">
         <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
@@ -15,11 +15,36 @@
 
 </div>
 <div id="results">
-  <%= render 'result' %>
+
 </div>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.datepicker').datepicker();
+    $(function() {
+        var start = moment().subtract(29, 'days');
+        var end = moment();
+
+        function cb(start, end) {
+            $('.daterange ').html(start + ' - ' + end);
+        }
+
+        $(".daterange").daterangepicker({
+            startDate: start,
+            endDate: end,
+            locale: {
+                format: 'DD/MMM/YYYY'
+            },
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+
+        }, cb);
+
+        cb(start, end);
+
     });
 </script>
 
