@@ -1,0 +1,40 @@
+<h1>Create New Glucose Level </h1>
+<% if @glucoselevel.errors.any? %>
+  <div id="error_explanation" class="col-lg-offset-1">
+    <h2><%= pluralize(@glucoselevel.errors.count, "error") %> prohibited this Level from being saved:</h2>
+
+    <ul>
+      <% @glucoselevel.errors.messages.values.flatten.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@glucoselevel, :html => {class: "form-horizontal",
+
+                                    role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :g_level , "Glucose Level" %>
+        </div>
+        <div class="col-md-8">
+
+
+          <%= f.number_field_tag :g_level, class: "form-control form-group",
+
+                           placeholder: "Glucose Level",
+                           autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <%= f.submit class: "btn btn-primary btn-lg btn-xlarge" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
